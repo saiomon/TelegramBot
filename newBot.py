@@ -37,6 +37,7 @@ def main():
     disp.add_handler(CallbackQueryHandler(actions.on,pattern="on"))
     disp.add_handler(CallbackQueryHandler(actions.off,pattern="off"))
     disp.add_handler(CallbackQueryHandler(actions.status,pattern="status"))
+    disp.add_handler(CallbackQueryHandler(actions.rfrsh,pattern="rfrsh"))
 
     #cloud:
     disp.add_handler(CallbackQueryHandler(actions.cloud,pattern="^cloud"))

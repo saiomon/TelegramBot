@@ -1,7 +1,7 @@
 import menu,db,food,forecast,jee,hsl,db
 import cloud as cdb
 import lights as hue
-import datetime
+import datetime, subprocess
 from logprint import printer
 
 from telegram.ext import ConversationHandler
@@ -14,6 +14,10 @@ CREATE_FILE=1
 def out(update, context):
     print(update.message.text)
 
+def rfrsh(update,context):
+    q = update.callback_query
+    context.bot.answerCallbackQuery(callback_query_id=q.id,text="Restarting")
+    subprocess.call(['./refresh.sh'])
 
 def start(update, context):
     db.handle_db(update)

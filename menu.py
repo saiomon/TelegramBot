@@ -10,6 +10,7 @@ def menu_keyboard_def(erno=False):
              InlineKeyboardButton('🍣', callback_data='vpor')]]
     if erno:
         keyboard.append([InlineKeyboardButton('cloud', callback_data='cloud/')])
+        keyboard.append([InlineKeyboardButton('🔁', callback_data='rfrsh')])
     return InlineKeyboardMarkup(keyboard)
 
 def menu_keyboard():
