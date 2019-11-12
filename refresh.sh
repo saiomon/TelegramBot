@@ -1,4 +1,5 @@
 #!/bin/sh
+echo moi
 ps ax | newBot.py
 pkill -f newBot.py
 git pull
