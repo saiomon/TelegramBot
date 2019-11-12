@@ -39,8 +39,10 @@ def jees(context):
     for id in ids:
         context.bot.send_message(chat_id=id,text=jee.get_jee())
     t=jee.new_time()
+    print(context.job.interval)
     print(t+datetime.datetime.now(),type(t),t)
     context.job.interval=t
+    print(context.job.interval)
 
 def cloud(update,context):
     q = update.callback_query
