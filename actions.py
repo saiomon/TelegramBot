@@ -39,9 +39,10 @@ def send_daily(context):
 
 @run_async
 def jees(context):
-    ids=db.get_jees()
-    for id in ids:
-        context.bot.send_message(chat_id=id,text=jee.get_jee())
+    if 9<= datetime.datetime.now().hour <=23:
+        ids=db.get_jees()
+        for id in ids:
+            context.bot.send_message(chat_id=id,text=jee.get_jee())
     t=jee.new_time()
     print(context.job.interval)
     print(t+datetime.datetime.now(),type(t),t)

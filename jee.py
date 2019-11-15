@@ -1,10 +1,7 @@
 import random, requests,os,json
 from datetime import datetime,timedelta
 def new_time():
-        dt=datetime.now()+timedelta(hours=random.randint(3,23),minutes=random.randint(0,59))
-        while not(9 <= dt.hour <= 23):
-            dt=datetime.now()+timedelta(hours=random.randint(3,23),minutes=random.randint(0,59))
-        return dt-datetime.now()
+        return timedelta(hours=random.randint(3,23),minutes=random.randint(0,59))
 
 def get_jee():
     s=random.randint(1,100)
