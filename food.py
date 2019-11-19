@@ -1,8 +1,8 @@
 import requests, re
 from requests.exceptions import HTTPError,Timeout
-from datetime import datetime
+from datetime import datetime,date
 
-def por(date=datetime.now()):
+def por(d=date.today()):
     try:
         response=requests.get("http://por.fi/Menu-Pitajanmaki",timeout=10)
     except Timeout:
@@ -12,7 +12,7 @@ def por(date=datetime.now()):
     except Exception as err:
         print('Other error occurred: ' + err)
     else:
-        sep=str(datetime.now().day)+"."+str(datetime.now().month)
+        sep=str(d.day)+"."+str(d.month)
         dataString=sep+'\n'
         txt=response.text
         if sep in txt:
@@ -24,7 +24,7 @@ def por(date=datetime.now()):
             dataString=dataString+"Not available."
     return dataString
 
-def por_v():
+def por_v(d=date.today()):
     try:
         response=requests.get("http://por.fi/Menu-Vuosaari",timeout=10)
     except Timeout:
@@ -34,7 +34,7 @@ def por_v():
     except Exception as err:
         print('Other error occurred: ' + err)
     else:
-        sep=str(datetime.now().day)+"."+str(datetime.now().month)+"."
+        sep=str(d.day)+"."+str(d.month)+"."
         dataString=sep
         txt=response.text
         if sep in txt:
@@ -49,3 +49,39 @@ def por_v():
 def remove_tags(txt):
     clean=re.compile('<.*?>')
     return re.sub(clean,'',txt)
+
+def get_dates(fromD=date.today()):
+    ds=[]
+    try:
+        response=requests.get("http://por.fi/Menu-Pitajanmaki",timeout=10)
+    except Timeout:
+        return "Site not responding"
+    except HTTPError as http_err:
+        print('HTTP error occurred: ' + http_err)
+    except Exception as err:
+        print('Other error occurred: ' + err)
+    else:
+        for i in range(7):
+            tst=fromD.replace(day=fromD.day+i)
+            sep=str(tst.day)+"."+str(tst.month)
+            if sep in response.text:
+                ds.append(sep)
+    return ds
+
+def get_dates_v(fromD=date.today()):
+    ds=[]
+    try:
+        response=requests.get("http://por.fi/Menu-Vuosaari",timeout=10)
+    except Timeout:
+        return "Site not responding"
+    except HTTPError as http_err:
+        print('HTTP error occurred: ' + http_err)
+    except Exception as err:
+        print('Other error occurred: ' + err)
+    else:
+        for i in range(7):
+            tst=fromD.replace(day=fromD.day+i)
+            sep=str(tst.day)+"."+str(tst.month)
+            if sep in response.text:
+                ds.append(sep)
+    return ds

@@ -2,6 +2,7 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 import cloud
 
 def menu_keyboard_def(erno=False):
+    keyboard=[]
     keyboard=[[InlineKeyboardButton('🚌', callback_data='hsl'),
              InlineKeyboardButton('🚴‍♂', callback_data='bike'),
              InlineKeyboardButton('🌦', callback_data='wether')],
@@ -22,6 +23,34 @@ def menu_keyboard():
              InlineKeyboardButton('🍣', callback_data='vpor')],
              [InlineKeyboardButton('🧨', callback_data='back')]]
     return InlineKeyboardMarkup(keyboard)
+
+def food_menu(dates):
+    keyboard=[]
+    for d in dates:
+        keyboard.append(InlineKeyboardButton(d+'.', callback_data='por'+':'+d))
+    keyboard=[keyboard,[InlineKeyboardButton('🚌', callback_data='hsl'),
+             InlineKeyboardButton('🚴‍♂', callback_data='bike'),
+             InlineKeyboardButton('🌦', callback_data='wether')],
+             [InlineKeyboardButton('💡', callback_data='lights'),
+             InlineKeyboardButton('🍔', callback_data='por'),
+             InlineKeyboardButton('🍣', callback_data='vpor')],
+             [InlineKeyboardButton('🧨', callback_data='back')]]
+    return InlineKeyboardMarkup(keyboard)
+
+def food_menu_v(dates):
+    keyboard=[]
+    for d in dates:
+        keyboard.append(InlineKeyboardButton(d+'.', callback_data='vpor'+':'+d))
+    keyboard=[keyboard,[InlineKeyboardButton('🚌', callback_data='hsl'),
+             InlineKeyboardButton('🚴‍♂', callback_data='bike'),
+             InlineKeyboardButton('🌦', callback_data='wether')],
+             [InlineKeyboardButton('💡', callback_data='lights'),
+             InlineKeyboardButton('🍔', callback_data='por'),
+             InlineKeyboardButton('🍣', callback_data='vpor')],
+             [InlineKeyboardButton('🧨', callback_data='back')]]
+    return InlineKeyboardMarkup(keyboard)
+
+
 
 def menu_keyboard_light():
     keyboard=[[InlineKeyboardButton('🔦', callback_data='on'),

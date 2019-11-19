@@ -145,13 +145,27 @@ def weather(update,context):
 def por(update,context):
     q = update.callback_query
     printer(q)
-    q.edit_message_text(text=food.por(), reply_markup=menu.menu_keyboard())
+    try:
+        d=q.data.split(':')[1].split('.')
+    except:
+        resp=food.por()
+    else:
+        resp=food.por(datetime.date.today().replace(month=int(d[1]),day=int(d[0])))
+    dates=food.get_dates()
+    q.edit_message_text(text=resp, reply_markup=menu.food_menu(dates))
 
 @run_async
 def vpor(update,context):
     q = update.callback_query
     printer(q)
-    q.edit_message_text(text=food.por_v(), reply_markup=menu.menu_keyboard())
+    try:
+        d=q.data.split(':')[1].split('.')
+    except:
+        resp=food.por_v()
+    else:
+        resp=food.por_v(datetime.date.today().replace(month=int(d[1]),day=int(d[0])))
+    dates=food.get_dates()
+    q.edit_message_text(text=resp, reply_markup=menu.food_menu_v(dates))
 
 @run_async
 def light(update,context):
