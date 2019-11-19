@@ -170,6 +170,12 @@ def vpor(update,context):
     dates=food.get_dates()
     q.edit_message_text(text=resp, reply_markup=menu.food_menu_v(dates))
 
+def is_ravioli(context):
+    id=int(os.environ.get("ERNO",""))
+    txt=food.ravioli()
+    if txt:
+        context.bot.send_message(chat_id=id,text=txt)
+
 @run_async
 def light(update,context):
     q = update.callback_query

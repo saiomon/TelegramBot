@@ -1,6 +1,6 @@
 import requests, re
 from requests.exceptions import HTTPError,Timeout
-from datetime import datetime,date
+from datetime import datetime,date,timedelta
 
 def por(d=date.today()):
     try:
@@ -85,3 +85,16 @@ def get_dates_v(fromD=date.today()):
             if sep in response.text:
                 ds.append(sep)
     return ds
+
+
+def ravioli():
+    for i in range(3):
+        r=por(date.today()-timedelta(days=i)).lower()
+        if "raviol" in r:
+            if i==0:
+                return "Tänään on raviolipäivä!!"
+            elif i==1:
+                return "Huomenna raviolia!"
+            elif i==2:
+                return "Ylihuomenna raviolia!"
+    return None
