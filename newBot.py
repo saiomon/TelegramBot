@@ -68,7 +68,7 @@ def main():
 
     t7=datetime.time(hour=7)
     jobs.run_daily(actions.send_daily,time=t7)#daily
-    jobs.run_daily(actions.is_ravioli,time=datetime.time(hour=20,minute=30))  #ravioli alert
+    jobs.run_daily(actions.is_ravioli,time=datetime.time(hour=9))  #ravioli alert
 
     d=actions.jee.new_time()
     print(d+datetime.datetime.now(),type(d),d)
