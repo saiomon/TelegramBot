@@ -89,7 +89,7 @@ def get_dates_v(fromD=date.today()):
 
 def ravioli():
     for i in range(3):
-        r=por(date.today()-timedelta(days=i)).lower()
+        r=por(date.today()+timedelta(days=i)).lower()
         if "raviol" in r:
             if i==0:
                 return "Tänään on raviolipäivä!!"
