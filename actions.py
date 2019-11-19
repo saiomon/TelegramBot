@@ -4,6 +4,7 @@ import lights as hue
 import datetime, subprocess
 from logprint import printer
 
+import os
 from telegram.ext import ConversationHandler
 from telegram.ext.dispatcher import run_async
 
@@ -21,14 +22,16 @@ def rfrsh(update,context):
 
 def start(update, context):
     db.handle_db(update)
-    b=update.message.chat.id==101714155
+    admin=os.environ.get("ERNO","")
+    b=update.message.chat.id==int(admin)#101714155
     update.message.reply_text(text='MOICCULI{}! Mie oon Erppa.'.format(db.get_name(update)), reply_markup=menu.menu_keyboard_def(erno=b))
 
 @run_async
 def main_menu(update,context):
     q = update.callback_query
     db.handle_db(q)
-    b=q.message.chat.id==101714155
+    admin=os.environ.get("ERNO","")
+    b=q.message.chat.id==int(admin)#101714155
     q.edit_message_text(text='MOICCU{}! Mie oon Erppa.'.format(db.get_name(q)), reply_markup=menu.menu_keyboard_def(erno=b))
 
 @run_async
