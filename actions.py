@@ -164,7 +164,7 @@ def vpor(update,context):
     try:
         d=q.data.split(':')[1].split('.')
     except:
-        resp=food.por_v()
+        resp=food.por_v(datetime.date.today())
     else:
         resp=food.por_v(datetime.date.today().replace(month=int(d[1]),day=int(d[0])))
     dates=food.get_dates()

@@ -2,7 +2,7 @@ import requests, re
 from requests.exceptions import HTTPError,Timeout
 from datetime import datetime,date,timedelta
 
-def por(d=date.today()):
+def por(d):
     try:
         response=requests.get("http://por.fi/Menu-Pitajanmaki",timeout=10)
     except Timeout:
@@ -24,7 +24,7 @@ def por(d=date.today()):
             dataString=dataString+"Not available."
     return dataString
 
-def por_v(d=date.today()):
+def por_v(d):
     try:
         response=requests.get("http://por.fi/Menu-Vuosaari",timeout=10)
     except Timeout:
