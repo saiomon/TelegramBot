@@ -50,7 +50,8 @@ def remove_tags(txt):
     clean=re.compile('<.*?>')
     return re.sub(clean,'',txt)
 
-def get_dates(fromD=date.today()):
+def get_dates():
+    fromD=date.today()
     ds=[]
     try:
         response=requests.get("http://por.fi/Menu-Pitajanmaki",timeout=10)
@@ -68,7 +69,8 @@ def get_dates(fromD=date.today()):
                 ds.append(sep)
     return ds
 
-def get_dates_v(fromD=date.today()):
+def get_dates_v():
+    fromD=date.today()
     ds=[]
     try:
         response=requests.get("http://por.fi/Menu-Vuosaari",timeout=10)
