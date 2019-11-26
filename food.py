@@ -63,7 +63,7 @@ def get_dates():
         print('Other error occurred: ' + err)
     else:
         for i in range(7):
-            tst=fromD.replace(day=fromD.day+i)
+            tst+=timedelta(days=i)
             sep=str(tst.day)+"."+str(tst.month)
             if sep in response.text:
                 ds.append(sep)
@@ -82,7 +82,7 @@ def get_dates_v():
         print('Other error occurred: ' + err)
     else:
         for i in range(7):
-            tst=fromD.replace(day=fromD.day+i)
+            tst+=timedelta(days=i)
             sep=str(tst.day)+"."+str(tst.month)
             if sep in response.text:
                 ds.append(sep)
