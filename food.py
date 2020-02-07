@@ -16,7 +16,7 @@ def por(d):
         dataString=sep+'\n'
         txt=response.text
         if sep in txt:
-            txt=txt.split('<div id="Printable" class="printable">')[1].split(sep)[1].split("5.60")[0]
+            txt=txt.split('<div id="Printable" class="printable">')[1].split(sep)[1].split("5.75")[0]
             txt=txt.replace("<br />","\n").replace("&nbsp","").replace(";","").replace("&ouml","ö").replace("&auml","ä")+"5.60"
             txt=remove_tags(txt)
             dataString=dataString+txt
@@ -38,7 +38,7 @@ def por_v(d):
         dataString=sep
         txt=response.text
         if sep in txt:
-            txt=txt.split('<div id="Printable" class="printable">')[1].split(sep)[1].split("0.85")[0]
+            txt=txt.split('<div id="Printable" class="printable">')[1].split(sep)[1].split("0.90")[0]
             txt=txt.replace("<br />","\n").replace("&nbsp","").replace(";","").replace("&ouml","ö").replace("&auml","ä")+"0.85"
             txt=remove_tags(txt)
             dataString=dataString+txt
