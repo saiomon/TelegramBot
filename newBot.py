@@ -1,4 +1,4 @@
-import logging,os,datetime,random
+import logging,os,datetime,random,sys
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler,MessageHandler,Filters, ConversationHandler
@@ -19,6 +19,9 @@ def main():
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
     TOKEN=os.environ.get("ERPPABOTACCESS", None)
+    if TOKEN==None:
+        print("No bot token")
+        sys.exit(0)
     updater = Updater(TOKEN, use_context=True)
     disp=updater.dispatcher
     jobs=updater.job_queue
