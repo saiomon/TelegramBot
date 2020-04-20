@@ -4,7 +4,7 @@ def new_time():
         return timedelta(hours=random.randint(3,23),minutes=random.randint(0,59))
 
 def get_jee():
-    s=random.randint(0,3)
+    s=random.randint(0,2)
     if s==0:
         return get_math()
     if s==1:
