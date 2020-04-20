@@ -13,7 +13,7 @@ def get_dir(node):
 def check_abs(path):
     print("Abs path: ",os.path.abspath(path))
     print(os.path.commonprefix([os.path.abspath(path),os.path.abspath("cloud/")]))
-
+    
 def add_dir(path):
     check_abs(path)
     try:
@@ -75,8 +75,10 @@ def get_full_path(node):    #-> /home/erno/TelegramBot/cloud/dir2/dir55/dirq/moi
 
 def is_file(path):
     return os.path.isfile(path)
+    
 def is_dir(path):
     return os.path.isdir(path)
+    
 def get_fn(path):
     if is_file(path):
         return path.split("/")[-1]
