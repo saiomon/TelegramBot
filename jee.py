@@ -4,20 +4,14 @@ def new_time():
         return timedelta(hours=random.randint(3,23),minutes=random.randint(0,59))
 
 def get_jee():
-    s=random.randint(1,100)
-    if s>75:
-        return get_zemp()
-    if s>50:
+    s=random.randint(0,3)
+    if s==0:
         return get_math()
-    if s>25:
+    if s==1:
         return get_quate()
-    if s>0:
+    if s==2:
         return get_joke()
 
-def get_zemp():
-    names=["Erno", "Saara"]
-    lst=["Jes hyvä {}!","Onnea {}!","Just noin {}!", "Oot tosi hyvä {}!","Oot oikeessa {}!","Siis hääh mitääh! 😜🤪🙈🙊🙀!","Nättii {}!","Loistavaa {}!","Mitä nälkäinen orava sanoi aasille?\n\n-Pistaasipähkinä","What did the hungry squirrel say to the donkey?\n\n-Pistachio"]
-    return random.choice(lst).format(random.choice(names))
 
 def get_math():
     key=os.environ.get("RAPID_API_KEY", None)
